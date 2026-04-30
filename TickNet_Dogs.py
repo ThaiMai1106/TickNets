@@ -24,7 +24,7 @@ def get_args():
     Parse the command line arguments.
     """
     parser = argparse.ArgumentParser(description='TickNet training script for cifar and StanfordDogs datasets.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)    
-    parser.add_argument('-r', '--data-root', type=str, default='../../../datasets/StanfordDogs', help='Dataset root path.')
+    parser.add_argument('-r', '--data-root', type=str, default='data', help='Dataset root path.')
     #parser.add_argument('-d', '--dataset', choices=['cifar10', 'cifar100', 'dogs'], required=True, help='Dataset name.')
     parser.add_argument('-d', '--dataset', type=str, choices=['cifar10', 'cifar100', 'dogs'], default='dogs', help='Dataset name.')
     parser.add_argument('--download', action='store_true', help='Download the specified dataset before running the training.')    
@@ -149,8 +149,8 @@ def run_epoch(train, data_loader, model, criterion, optimizer, n_epoch, args, de
             loss.backward()
             optimizer.step()
     
-        if (n_batch % 10) == 0:
-            print('[{}]  epoch {}/{},  batch {}/{},  loss_{}={:.5f},  acc_{}={:.2f}%'.format('train' if train else ' val ', n_epoch + 1, args.epochs, n_batch + 1, batch_count, "train" if train else "val", loss_item, "train" if train else "val", 100.0 * acc))
+        #if (n_batch % 10) == 0:
+          #  print('[{}]  epoch {}/{},  batch {}/{},  loss_{}={:.5f},  acc_{}={:.2f}%'.format('train' if train else ' val ', n_epoch + 1, args.epochs, n_batch + 1, batch_count, "train" if train else "val", loss_item, "train" if train else "val", 100.0 * acc))
     
     return (sum(losses) / len(losses), sum(accs) / len(accs))
             
@@ -169,7 +169,7 @@ def main():
     torch.autograd.set_detect_anomaly(True)     
     
     #arr_typesize = ['large', 'small']
-    arr_typesize = ['small']
+    arr_typesize = ['lagre']
     for typesize in arr_typesize:    
         strmode = 'StanfordDogs_TickNet_' + typesize + '_SE'  
         pathout = './checkpoints/' + strmode

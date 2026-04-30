@@ -181,7 +181,7 @@ def main():
         model = build_TickNet(120, typesize=typesize, cifar=False)                
         model = model.to(device)
         
-        print(model)
+        #print(model)
         
         print('Number of model parameters: {}'.format(
         sum([p.data.nelement() for p in model.parameters()])))

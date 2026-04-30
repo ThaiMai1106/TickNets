@@ -325,7 +325,7 @@ class TickNet(torch.nn.Module):
             stage = torch.nn.Sequential()
             for unit_id, unit_channels in enumerate(stage_channels):
                 stride = strides[stage_id] if unit_id == 0 else 1                
-                stage.add_module("unit{}".format(unit_id + 1), FR_PDP_block_v2(in_channels=in_channels, out_channels=unit_channels, stride=stride, expand_ratio=2.0, kernel_size=5, use_ghost=True, use_eca=True,)
+                stage.add_module("unit{}".format(unit_id + 1), FR_PDP_block_v2(in_channels=in_channels, out_channels=unit_channels, stride=stride, expand_ratio=2.0, kernel_size=5, use_ghost=True, use_eca=True))
                 in_channels = unit_channels
             self.backbone.add_module("stage{}".format(stage_id + 1), stage)
         self.final_conv_channels = 1024        

@@ -102,7 +102,7 @@ def get_data_loader(args, train):
         dataset_class(root=args.data_root, train=train, download=True, transform=transform)
 
     # instantiate dataset class and create data loader from it
-    dataset = dataset_class(root=args.data_root, train=train, download=False, transform=transform)
+    dataset = dataset_class(root=args.data_root, train=train, download=True, transform=transform)
     return torch.utils.data.DataLoader(dataset, batch_size=args.batch_size, shuffle=True if train else False, num_workers=args.workers)    
 
 
